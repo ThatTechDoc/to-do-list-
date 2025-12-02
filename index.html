@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Tasks</h1>
+            <div class="header-controls">
+                <input type="text" class="search-input" placeholder="Search tasks..." id="searchInput">
+                <select class="filter-select" id="filterSelect">
+                    <option value="all">All</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+                <button class="theme-toggle" id="themeToggle">
+                    <img src="./assets/theme-light-dark.svg" alt="Toggle theme" id="themeIcon" width="24" height="24">
+                </button>
+            </div>
+        </header>
+
+        <form class="todo-form" id="todoForm">
+            <h2>Create New Task</h2>
+            <input type="text" class="input" id="titleInput" placeholder="What do you need to do?" required>
+            <textarea class="input" id="descriptionInput" placeholder="Add a description (optional)"></textarea>
+            <div class="datetime-group">
+                <input type="date" class="input" id="dateInput" required>
+                <input type="time" class="input" id="timeInput" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save To-Do</button>
+        </form>
+
+        <div class="loading" id="loading">Loading...</div>
+        <div class="todo-list" id="todoList"></div>
+    </div>
+
+    <!-- Modal for editing -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h2>Edit Task</h2>
+            <form class="edit-form" id="editForm">
+                <input type="text" class="input" id="editTitle" required>
+                <textarea class="input" id="editDescription"></textarea>
+                <div class="datetime-group">
+                    <input type="date" class="input" id="editDate" required>
+                    <input type="time" class="input" id="editTime" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for confirmation -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to permanently delete this task?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-danger" id="confirmDelete">Delete</button>
+                <button class="btn btn-secondary" id="cancelDelete">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app1.js"></script>
+</body>
+</html>
